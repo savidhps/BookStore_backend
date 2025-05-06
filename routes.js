@@ -12,5 +12,8 @@ route.post('/register',userController.registerController)
 //path to Login
 route.post('/login',userController.loginController)
 
+//path too Google Login
+route.post('/google-login',userController.googleLoginController)
+
 // export route 
 module.exports=route
