@@ -64,3 +64,6 @@ const bookschema=new mongoose.Schema({
         default:""
     }
 })
+
+const books=mongoose.model('books',bookschema)
+module.exports=books;

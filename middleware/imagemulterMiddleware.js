@@ -5,22 +5,23 @@ const multer= require('multer')
 const storage=multer.diskStorage({
     // path to store the file 
     destination:(req,file,callback)=>{
-        callback(null,'/uploads')
+        callback(null,'./uploads')
     },
     //name to store the file
     filename:(req,file,callback)=>{
-        const fname=`image-${file.orginalname}`
+        const fname=`image-${file.originalname}`
         callback(null,fname)
     }
 })
 
 const fileFilter=(req,file,callback)=>{
     //accept only png,jpg,jpeg
-    if(file.mineType=='image/png' || file.mineType=='image/jpg'||file.mineType=='image/jpeg'){
+    if(file.mimetype=='image/png' || file.mimetype=='image/jpg'||file.mimetype=='image/jpeg'
+         ||file.mimetype=='image/PNG' || file.mimetype=='image/JPG'){
         callback(null,true)
     }else{
         callback(null,false)
-        callback(new Error("accept onlu png,jpg,jpeg"))
+        callback(new Error("accept only png,jpg,jpeg"))
     }
 }
 
