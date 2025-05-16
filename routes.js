@@ -23,7 +23,17 @@ route.post('/login',userController.loginController)
 //path too Google Login
 route.post('/google-login',userController.googleLoginController)
 
-//
+//path to get home (4) books
+route.get('/all-home-book',bookController.getHomeBookController)
+
+
+
+//_____________USER______________
+
+//path to get all books
+route.get('/all-books',jwtMiddleware,bookController.getAllBookController)
+
+// path to add books
 route.post('/add-book',jwtMiddleware,multerConfig.array('uploadedImage',3),bookController.addBookController)
 
 

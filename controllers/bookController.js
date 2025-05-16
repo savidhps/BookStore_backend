@@ -34,9 +34,35 @@ exports.addBookController=async (req,res) => {
         }
 
     }catch(error){
-        res.status(500).json("hi",error)
+        res.status(500).json(error)
     }
 
 
     // res.status(200).json('request recieved at addbookController')
+}
+
+//to get home books only four books
+exports.getHomeBookController=async(req,res)=>{
+
+    try{
+        const allHomeBooks=await books.find().sort({_id:-1}).limit(4)
+        console.log(allHomeBooks);
+        
+        res.status(200).json(allHomeBooks)
+    }catch(error){
+        res.status(500).json(error)
+    }
+}
+
+//get all books
+exports.getAllBookController=async(req,res)=>{
+
+    try{
+        const allHomeBooks=await books.find()
+        console.log(allHomeBooks);
+        
+        res.status(200).json(allHomeBooks)
+    }catch(error){
+        res.status(500).json(error)
+    }
 }
