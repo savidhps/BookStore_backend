@@ -36,6 +36,9 @@ route.get('/all-books',jwtMiddleware,bookController.getAllBookController)
 // path to add books
 route.post('/add-book',jwtMiddleware,multerConfig.array('uploadedImage',3),bookController.addBookController)
 
+//Path to get a book 
+route.get('/view-books/:id',bookController.getABookController)
+
 
 // export route 
 module.exports=route

@@ -21,6 +21,9 @@ bookstoreServer.use(express.json())
 //use routes
 bookstoreServer.use(route)
 
+//export the upload folder from the server
+bookstoreServer.use('/upload',express.static('./uploads'))
+
 
 
 //create port
