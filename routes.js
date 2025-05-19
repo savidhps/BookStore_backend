@@ -40,5 +40,13 @@ route.post('/add-book',jwtMiddleware,multerConfig.array('uploadedImage',3),bookC
 route.get('/view-books/:id',bookController.getABookController)
 
 
+//----------------ADMIN_______________-----
+//view book for admin
+route.get('/admin-all-books',jwtMiddleware,bookController.getAllBookAdminController)
+
+//path to approve a book
+route.put('/approve-book',jwtMiddleware,bookController.approveBookControler)
+
+
 // export route 
 module.exports=route
