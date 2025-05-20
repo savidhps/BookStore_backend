@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken")
 exports.registerController = async (req, res) => {
     //logic
     const { username, email, password } = req.body
-    console.log(username, email, password);
+    // console.log(username, email, password);
     try {
         const existinUers = await users.findOne({ email })
         if (existinUers) {
@@ -30,7 +30,7 @@ exports.registerController = async (req, res) => {
 //login
 exports.loginController = async (req, res) => {
     const { email, password } = req.body
-    console.log(email, password);
+    // console.log(email, password);
     try {
         const existingUser = await users.findOne({ email })
         if (existingUser) {
@@ -52,7 +52,7 @@ exports.loginController = async (req, res) => {
 //googleLogin
 exports.googleLoginController = async (req, res) => {
     const { username, email, password, photo } = req.body
-    console.log(username, email, password, photo)
+    // console.log(username, email, password, photo)
 
     try {
         const existingUser = await users.findOne({ email })
@@ -72,6 +72,19 @@ exports.googleLoginController = async (req, res) => {
             res.status(200).json({ existingUser:newUser, token })
         }
     } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+//get all users controller
+exports.getAllUserController=async(req,res)=>{
+    const email=req.payload
+    console.log(email);
+    
+    try{
+        const allusers=await users.find({email:{$ne:email}})
+        res.status(200).json(allusers)
+    }catch(error){
         res.status(500).json(error)
     }
 }

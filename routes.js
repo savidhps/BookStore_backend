@@ -5,11 +5,14 @@ const userController=require('./controllers/userController')
 
 const bookController=require('./controllers/bookController')
 
+const joBcontroller=require('./controllers/joBcontroller')
+
 //import jwt middleware
 const jwtMiddleware=require('./middleware/jwtMiddleware')
 
 // import multer 
 const multerConfig=require('./middleware/imagemulterMiddleware')
+
 
 //create the instance for the class routes
 const route= new express.Router()
@@ -46,6 +49,12 @@ route.get('/admin-all-books',jwtMiddleware,bookController.getAllBookAdminControl
 
 //path to approve a book
 route.put('/approve-book',jwtMiddleware,bookController.approveBookControler)
+
+//path to get all users
+route.get('/all-users',jwtMiddleware,userController.getAllUserController)
+
+//path to add a job
+route.post('/add-job',joBcontroller.addJobController)
 
 
 // export route 

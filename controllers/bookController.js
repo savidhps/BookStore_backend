@@ -7,15 +7,15 @@ exports.addBookController = async (req, res) => {
     // console.log(req.body);
     // console.log(req.files);
     const { title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, status, userMail, brought } = req.body
-    console.log(title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, status, userMail, brought);
+    // console.log(title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, status, userMail, brought);
 
 
     uploadedImage = []
     req.files.map((item) => { uploadedImage.push(item.filename) })
-    console.log(uploadedImage);
+    // console.log(uploadedImage);
 
     const email = req.payload
-    console.log(email);
+    // console.log(email);
 
 
 
@@ -46,7 +46,7 @@ exports.getHomeBookController = async (req, res) => {
 
     try {
         const allHomeBooks = await books.find().sort({ _id: -1 }).limit(4)
-        console.log(allHomeBooks);
+        // console.log(allHomeBooks);
 
         res.status(200).json(allHomeBooks)
     } catch (error) {
@@ -56,9 +56,9 @@ exports.getHomeBookController = async (req, res) => {
 
 //get all books
 exports.getAllBookController = async (req, res) => {
-    console.log(req.query)
+    // console.log(req.query)
     const searchKey=req.query.search
-    const {email}=req.payload
+    const email=req.payload
 
     try {
         // query is the code for giving it to mongodb
@@ -111,13 +111,13 @@ exports.getAllBookAdminController=async(req,res)=>{
 //to approve books
 exports.approveBookControler=async(req,res)=>{
     const {_id,title,author,noofpages,imageurl,price,dprice,abstract,publisher,language,isbn,category,uploadingImg,status,userMail,brought}=req.body
-    console.log("_id,title,author,noofpages,imageurl,price,dprice,abstract,publisher,language,isbn,category,uploadingImg,status,userMail,brought");
+    // console.log("_id,title,author,noofpages,imageurl,price,dprice,abstract,publisher,language,isbn,category,uploadingImg,status,userMail,brought");
     
     try{
         const existingBook=await books.findByIdAndUpdate({_id},{
             _id,title,author,noofpages,imageurl,price,dprice,abstract,publisher,language,isbn,category,uploadingImg,status:"approved",userMail,brought
         },{new:true})
-        await existingBook.save()
+        // await existingBook.save()
         res.status(200).json(existingBook)
 
     }catch(error){
