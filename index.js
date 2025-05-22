@@ -24,6 +24,9 @@ bookstoreServer.use(route)
 //export the upload folder from the server
 bookstoreServer.use('/upload',express.static('./uploads'))
 
+//upload pdf folder for the server
+bookstoreServer.use('/pdfUploads',express.static('./pdfUploads'))
+
 
 
 //create port

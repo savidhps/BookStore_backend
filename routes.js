@@ -67,6 +67,9 @@ route.get('/all-jobs',joBcontroller.getAllJobController)
 //path to delete job
 route.delete('/delete-job/:id',joBcontroller.deleteAJobController)
 
+//View job applicant in admin
+route.get('/all-application',appcontroller.getAllApplicationController)
+
 
 // export route 
 module.exports=route
