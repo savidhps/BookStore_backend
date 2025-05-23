@@ -70,6 +70,8 @@ route.delete('/delete-job/:id',joBcontroller.deleteAJobController)
 //View job applicant in admin
 route.get('/all-application',appcontroller.getAllApplicationController)
 
+//path to update admin profile
+route.put('/admin-profile-update',jwtMiddleware,multerConfig.single('profile'),userController.editAdminProfileController)
 
 // export route 
 module.exports=route
