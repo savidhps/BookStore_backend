@@ -47,6 +47,18 @@ route.get('/view-books/:id',bookController.getABookController)
 //path to apply fir job
 route.post('/apply-job',jwtMiddleware,pdfmulterConfig.single('resume'),appcontroller.addApplicationController)
 
+//path to get all user added books
+route.get('/user-books',jwtMiddleware,bookController.getAllUserBookController)
+
+//path to get all user brought books
+route.get('/user-brought-books',jwtMiddleware,bookController.getAllUserBroughtBookController)
+
+//path to delete user books
+route.delete('/delete-user-books/:id',bookController.deleteAUserBookController)
+
+//path to make payment
+route.put('/make-payment',jwtMiddleware,bookController.makepaymentController)
+
 
 //----------------ADMIN_______________-----
 //view book for admin
@@ -72,6 +84,9 @@ route.get('/all-application',appcontroller.getAllApplicationController)
 
 //path to update admin profile
 route.put('/admin-profile-update',jwtMiddleware,multerConfig.single('profile'),userController.editAdminProfileController)
+
+
+
 
 // export route 
 module.exports=route
